@@ -1,12 +1,20 @@
 import React, { Component } from "react";
+import base from "../base";
 import Member from "./Member";
-import sampleMembers from "../sample-member";
 import MemberForms from "./MemberForms";
+import sampleMembers from "../sample-member";
 
 class About extends Component {
   state = {
     members: {}
   };
+
+  componentDidMount() {
+    this.ref = base.syncState("members", {
+      context: this,
+      state: "members"
+    });
+  }
 
   addMember = member => {
     const newMember = { ...this.state.members }; //1. Take copy of existing state
@@ -15,7 +23,18 @@ class About extends Component {
     console.log("Adding new member!");
   };
 
-  updateMember = (key, member) => {};
+  updateMember = (key, updateMember) => {
+    const members = { ...this.state.members }; //1. Take copy of existing state
+    members[key] = updateMember; //2. Lookup member to be updated and change details
+    this.setState({ members }); //3. Update state
+    console.log(`Updating member ${members[key]}`);
+  };
+
+  deleteMember = key => {
+    const members = { ...this.state.members }; //1. Copy existing state
+    members[key] = null; //2. Remove by setting choosen member to null so it reflects on db
+    this.setState({ members }); //3. Set new state
+  };
 
   loadSampleMembers = () => {
     this.setState({ members: sampleMembers });
@@ -34,7 +53,12 @@ class About extends Component {
           with what they officially want on here.
         </p>
         <h3>Current members are:</h3>
-        <MemberForms members={this.state.members} addMember={this.addMember} />
+        <MemberForms
+          members={this.state.members}
+          addMember={this.addMember}
+          updateMember={this.updateMember}
+          deleteMember={this.deleteMember}
+        />
         <ul className="members-list">
           {Object.keys(this.state.members).map(key => (
             <Member key={key} index={key} details={this.state.members[key]} />

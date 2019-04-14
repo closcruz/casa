@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class EditMember extends Component {
+  static propTypes = {
+    member: PropTypes.shape({
+      name: PropTypes.string,
+      postion: PropTypes.string,
+      email: PropTypes.string,
+      major: PropTypes.string,
+      memSince: PropTypes.string
+    }),
+    index: PropTypes.string,
+    updateMember: PropTypes.func,
+    deleteMember: PropTypes.func
+  };
   handleChange = e => {
     const updateMember = {
       ...this.props.member,
@@ -43,6 +55,9 @@ class EditMember extends Component {
           onChange={this.handleChange}
           value={this.props.member.memSince}
         />
+        <button onClick={() => this.props.deleteMember(this.props.index)}>
+          Remove Member
+        </button>
       </div>
     );
   }

@@ -1,21 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class Member extends Component {
-  render() {
-    const { name, position, email, major, memSince } = this.props.details;
-    return (
-      <div>
-        <li className="member-item">
-          <h3 className="member-name">{name}</h3>
-          <h4 className="member-pos">{position}</h4>
-          <p className="email">{email}</p>
-          <p className="major">{major}</p>
-          <p className="memSince">{memSince}</p>
-        </li>
-      </div>
-    );
-  }
-}
+const Member = props => (
+  <div>
+    <li className="member-item">
+      <h3 className="member-name">{props.details.name}</h3>
+      <h4 className="member-pos">{props.details.position}</h4>
+      <p className="email">{props.details.email}</p>
+      <p className="major">{props.details.major}</p>
+      <p className="memSince">{props.details.memSince}</p>
+    </li>
+  </div>
+);
+
+Member.propTypes = {
+  details: PropTypes.shape({
+    name: PropTypes.string,
+    position: PropTypes.string,
+    email: PropTypes.string,
+    major: PropTypes.string,
+    memSince: PropTypes.string
+  })
+};
 
 export default Member;

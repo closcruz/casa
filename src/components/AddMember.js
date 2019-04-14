@@ -8,6 +8,10 @@ class AddMember extends Component {
   majorRef = React.createRef();
   memSinceRef = React.createRef();
 
+  static propTypes = {
+    addMember: PropTypes.func
+  };
+
   createMember = e => {
     e.preventDefault();
 

@@ -4,13 +4,25 @@ import AddMember from "./AddMember";
 import EditMember from "./EditMembers";
 
 class MemberForms extends Component {
+  static propTypes = {
+    members: PropTypes.object,
+    addMember: PropTypes.func,
+    updateMember: PropTypes.func,
+    deleteMember: PropTypes.func
+  };
   // TODO implement state for checking authentication for editing member list
   render() {
     return (
       <div className="member-forms">
         <h4>Edit Member List</h4>
-        {Object.keys(this.props.member).map(key => (
-          <EditMember key={key} index={key} member={this.props.member[key]} />
+        {Object.keys(this.props.members).map(key => (
+          <EditMember
+            key={key}
+            index={key}
+            member={this.props.members[key]}
+            updateMember={this.props.updateMember}
+            deleteMember={this.props.deleteMember}
+          />
         ))}
         <AddMember addMember={this.props.addMember} />
       </div>
