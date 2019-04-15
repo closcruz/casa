@@ -14,6 +14,7 @@ class EditMember extends Component {
     updateMember: PropTypes.func,
     deleteMember: PropTypes.func
   };
+
   handleChange = e => {
     const updateMember = {
       ...this.props.member,
