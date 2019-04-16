@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import EventForms from "./EventForms";
+import Event from "./Event";
 
 class Events extends Component {
   constructor() {
@@ -32,6 +34,17 @@ class Events extends Component {
     return (
       <div className="events">
         <h2>Upcoming Events</h2>
+        <EventForms
+          events={this.state.events}
+          addEvent={this.addEvent}
+          updateEvent={this.updateEvent}
+          deleteEvent={this.deleteEvent}
+        />
+        <ul className="event-list">
+          {Object.keys(this.state.events).map(key => (
+            <Event key={key} index={key} details={this.state.events[key]} />
+          ))}
+        </ul>
       </div>
     );
   }
