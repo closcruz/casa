@@ -23,12 +23,14 @@ class Events extends Component {
   };
 
   deleteEvent = key => {
-    const members = { ...this.state.events };
+    const events = { ...this.state.events };
+    events[key] = null;
+    this.setState({ events });
   };
 
   render() {
     return (
-      <div>
+      <div className="events">
         <h2>Upcoming Events</h2>
       </div>
     );
