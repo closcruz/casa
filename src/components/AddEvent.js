@@ -24,6 +24,25 @@ class AddEvent extends Component {
   };
 
   render() {
-    return <div />;
+    return (
+      <form className="event-add" onSubmit={this.createEvent}>
+        <input
+          name="title"
+          type="text"
+          placeholder="Title of Event"
+          ref={this.titleRef}
+        />
+        <input
+          name="date"
+          type="text"
+          placeholder="Date of Event"
+          ref={this.dateRef}
+        />
+        <textarea name="desc" placeholder="Description" ref={this.descRef} />
+        <button type="submit">Add Event</button>
+      </form>
+    );
   }
 }
+
+export default AddEvent;

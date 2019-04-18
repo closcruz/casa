@@ -31,14 +31,13 @@ class EditEvent extends Component {
           value={this.props.event.title}
         />
         <input
-          name="title"
+          name="date"
           type="text"
           onChange={this.handleChange}
           value={this.props.event.date}
         />
-        <input
-          name="title"
-          type="text"
+        <textarea
+          name="desc"
           onChange={this.handleChange}
           value={this.props.event.desc}
         />

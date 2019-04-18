@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AddEvent from "./AddEvent";
-import EditEvent from "./EditEvents";
+import EditEvent from "./EditEvent";
 
 class EventForms extends Component {
   static propTypes = {
