@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AddNews from "./AddNews";
 import NewsClip from "./NewsClip";
 
 class News extends Component {
@@ -34,6 +35,10 @@ class News extends Component {
     return (
       <div>
         <h2>News</h2>
+        {Object.keys(this.state.articles).map(key => (
+          <NewsClip key={key} index={key} details={this.state.articles[key]} />
+        ))}
+        <AddNews addArticle={this.addArticle} />
       </div>
     );
   }

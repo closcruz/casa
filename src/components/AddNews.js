@@ -6,7 +6,7 @@ class AddNews extends Component {
   postedOnRef = React.createRef();
   descRef = React.createRef();
 
-  static PropTypes = {
+  static propTypes = {
     addArticle: PropTypes.func.isRequired
   };
 
@@ -15,8 +15,8 @@ class AddNews extends Component {
 
     const article = {
       title: this.titleRef.current.value,
-      postedOnRef: this.postedOnRef.current.value,
-      descRef: this.descRef.current.value
+      postedOn: this.postedOnRef.current.value,
+      desc: this.descRef.current.value
     };
     this.props.addArticle(article);
     e.currentTarget.reset();

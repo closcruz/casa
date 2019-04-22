@@ -12,7 +12,7 @@ const NewsClip = props => (
 NewsClip.propTypes = {
   details: PropTypes.shape({
     title: PropTypes.string,
-    date: PropTypes.string,
+    postedOn: PropTypes.string,
     desc: PropTypes.string
   })
 };
