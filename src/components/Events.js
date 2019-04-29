@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import base from "../base";
 import EventForms from "./EventForms";
 import Event from "./Event";
 
@@ -8,6 +9,13 @@ class Events extends Component {
     this.state = {
       events: {}
     };
+  }
+
+  componentDidMount() {
+    this.ref = base.syncState("events", {
+      context: this,
+      state: "events"
+    });
   }
 
   addEvent = event => {

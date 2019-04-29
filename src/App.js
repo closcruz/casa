@@ -11,20 +11,22 @@ class App extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <h2 className="casa-big">
-            <Link to="/">CASA</Link>
-          </h2>
-          <ul className="nav-bar">
-            <li>
-              <Link to="/news">News</Link>
-            </li>
-            <li>
-              <Link to="/events">Events</Link>
-            </li>
-            <li>
-              <Link to="/about">About Us</Link>
-            </li>
-          </ul>
+          <div className="header">
+            <h2 className="casa-big">
+              <Link to="/">CASA</Link>
+            </h2>
+            <ul className="nav-bar">
+              <li>
+                <Link to="/news">News</Link>
+              </li>
+              <li>
+                <Link to="/events">Events</Link>
+              </li>
+              <li>
+                <Link to="/about">About Us</Link>
+              </li>
+            </ul>
+          </div>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/news" component={News} />

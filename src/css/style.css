@@ -1,0 +1,31 @@
+.header {
+  position: relative;
+  top: -50px;
+}
+h2.casa-big {
+  font-size: 5em;
+  text-align: center;
+}
+h2.casa-big a {
+  color: #cd6133;
+  text-decoration: none;
+}
+ul.nav-bar {
+  position: relative;
+  top: -50px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+          justify-content: center;
+  border: 10px solid #b33939;
+}
+ul.nav-bar li {
+  font-size: 1.8em;
+  display: inline-block;
+  background-color: #227093;
+  margin: 0 5px;
+}
+ul.nav-bar a {
+  color: #f7f1e3;
+  text-decoration: none;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import base from "../base";
 import AddNews from "./AddNews";
 import NewsClip from "./NewsClip";
 
@@ -9,6 +10,13 @@ class News extends Component {
     this.state = {
       articles: {}
     };
+  }
+
+  componentDidMount() {
+    this.ref = base.syncState("articles", {
+      context: this,
+      state: "news"
+    });
   }
 
   addArticle = article => {
