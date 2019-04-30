@@ -2,6 +2,7 @@
 @require './_*.styl'
 
 
+// STYLING FOR HEADER
 .header
   position relative
   top -50px
@@ -28,4 +29,23 @@ ul.nav-bar
     color white
     text-decoration none
 
-  
+// STYLING FOR ABOUT PAGE
+.about-container
+  border 5px solid goldenrod 
+  display grid
+  grid-template-columns 600px 400px
+  grid-template-rows 400px 
+
+.member-forms
+  display grid
+
+ul.members-list
+  display grid
+  grid-template-columns 300px 300px 300px
+  grid-template-rows 200px 200px
+  justify-items center
+  list-style-type none
+  li
+    border 2px solid blue
+    h3, h4, p
+      margin 10px 0

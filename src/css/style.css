@@ -29,3 +29,27 @@ ul.nav-bar a {
   color: #f7f1e3;
   text-decoration: none;
 }
+.about-container {
+  border: 5px solid #daa520;
+  display: grid;
+  grid-template-columns: 600px 400px;
+  grid-template-rows: 400px;
+}
+.member-forms {
+  display: grid;
+}
+ul.members-list {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 200px 200px;
+  justify-items: center;
+  list-style-type: none;
+}
+ul.members-list li {
+  border: 2px solid #227093;
+}
+ul.members-list li h3,
+ul.members-list li h4,
+ul.members-list li p {
+  margin: 10px 0;
+}

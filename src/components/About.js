@@ -42,9 +42,8 @@ class About extends Component {
 
   render() {
     return (
-      <div className="about">
+      <div>
         <h2>About our organization</h2>
-        <hr />
         <p>
           A good chunk of text will go here and this is place holder text for
           the purpose of styling and seeing how a paragraph about the group
@@ -53,17 +52,19 @@ class About extends Component {
           with what they officially want on here.
         </p>
         <h3>Current members are:</h3>
-        <MemberForms
-          members={this.state.members}
-          addMember={this.addMember}
-          updateMember={this.updateMember}
-          deleteMember={this.deleteMember}
-        />
-        <ul className="members-list">
-          {Object.keys(this.state.members).map(key => (
-            <Member key={key} index={key} details={this.state.members[key]} />
-          ))}
-        </ul>
+        <div className="about-container">
+          <MemberForms
+            members={this.state.members}
+            addMember={this.addMember}
+            updateMember={this.updateMember}
+            deleteMember={this.deleteMember}
+          />
+          <ul className="members-list">
+            {Object.keys(this.state.members).map(key => (
+              <Member key={key} index={key} details={this.state.members[key]} />
+            ))}
+          </ul>
+        </div>
         <button onClick={this.loadSampleMembers}>Load Sample Members</button>
       </div>
     );
