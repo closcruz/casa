@@ -42,7 +42,7 @@ class About extends Component {
 
   render() {
     return (
-      <div>
+      <div className="about">
         <h2>About our organization</h2>
         <p>
           A good chunk of text will go here and this is place holder text for
