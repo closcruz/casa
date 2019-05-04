@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import base from "../base";
 import AddNews from "./AddNews";
+import EditNews from "./EditNews";
 import NewsClip from "./NewsClip";
 
 class News extends Component {
@@ -15,7 +16,7 @@ class News extends Component {
   componentDidMount() {
     this.ref = base.syncState("articles", {
       context: this,
-      state: "news"
+      state: "articles"
     });
   }
 
@@ -47,6 +48,16 @@ class News extends Component {
           <NewsClip key={key} index={key} details={this.state.articles[key]} />
         ))}
         <AddNews addArticle={this.addArticle} />
+        <h4>Edit News</h4>
+        {Object.keys(this.state.articles).map(key => (
+          <EditNews
+            key={key}
+            index={key}
+            article={this.state.articles[key]}
+            updateArticle={this.updateArticle}
+            deleteArticle={this.deleteArticle}
+          />
+        ))}
       </div>
     );
   }

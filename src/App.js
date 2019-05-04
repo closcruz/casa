@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import News from "./components/News";
 import Events from "./components/Events";
+import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 
 class App extends Component {
@@ -25,6 +26,9 @@ class App extends Component {
               <li>
                 <Link to="/about">About Us</Link>
               </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
             </ul>
           </div>
           <Switch>
@@ -32,6 +36,7 @@ class App extends Component {
             <Route path="/news" component={News} />
             <Route path="/events" component={Events} />
             <Route path="/about" component={About} />
+            <Route path="/login" component={Login} />
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
