@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { firebaseApp } from "../base";
 import PropTypes from "prop-types";
 
 class Login extends Component {
@@ -14,6 +15,16 @@ class Login extends Component {
     };
   }
 
+  firebaseAuth = (email, password) => {
+    firebaseApp
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(this.props.authHandler)
+      .catch(err => {
+        alert(err.code);
+      });
+  };
+
   onChange = e => {
     const newCreds = { ...this.state };
     newCreds.credentials[e.target.name] = e.target.value;
@@ -23,6 +34,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login-form">
+        <p>Current user id: {this.props.user}</p>
         <input
           name="email"
           type="text"
@@ -35,8 +47,15 @@ class Login extends Component {
           onChange={this.onChange}
           value={this.state.credentials.password}
         />
-        <button onClick={() => console.log(this.state.credentials)}>
-          Print Creds
+        <button
+          onClick={() =>
+            this.firebaseAuth(
+              this.state.credentials.email,
+              this.state.credentials.password
+            )
+          }
+        >
+          Login
         </button>
       </div>
     );
