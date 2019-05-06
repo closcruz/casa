@@ -7,57 +7,54 @@ class Login extends Component {
     super();
 
     this.state = {
-      redirectToReferrer: false,
-      credentials: {
-        email: "",
-        password: ""
-      }
+      email: "",
+      password: ""
     };
   }
 
-  firebaseAuth = (email, password) => {
-    firebaseApp
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(this.props.authHandler)
-      .catch(err => {
-        alert(err.code);
-      });
-  };
+  // firebaseAuth = (email, password) => {
+  //   firebaseApp
+  //     .auth()
+  //     .signInWithEmailAndPassword(email, password)
+  //     .then(authData => {})
+  //     .catch(err => {
+  //       alert(err.code);
+  //     });
+  // };
 
   onChange = e => {
     const newCreds = { ...this.state };
-    newCreds.credentials[e.target.name] = e.target.value;
+    newCreds[e.target.name] = e.target.value;
     this.setState(newCreds);
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { onSubmit } = this.props;
+    const { email, password } = this.state;
+    if (onSubmit) {
+      onSubmit(email, password);
+    }
   };
 
   render() {
     return (
-      <div className="login-form">
-        <p>Current user id: {this.props.user}</p>
+      <form className="login-form" onSubmit={this.handleSubmit}>
+        <h2>Login</h2>
         <input
-          name="email"
           type="text"
+          name="email"
           onChange={this.onChange}
-          value={this.state.credentials.email}
+          value={this.state.email}
         />
         <input
-          name="password"
           type="password"
+          name="password"
           onChange={this.onChange}
-          value={this.state.credentials.password}
+          value={this.state.password}
         />
-        <button
-          onClick={() =>
-            this.firebaseAuth(
-              this.state.credentials.email,
-              this.state.credentials.password
-            )
-          }
-        >
-          Login
-        </button>
-      </div>
+        <button type="submit">Submit</button>
+      </form>
     );
   }
 }
