@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { firebaseApp } from "../base";
 import PropTypes from "prop-types";
+import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 
 class Login extends Component {
   constructor() {
@@ -11,16 +11,6 @@ class Login extends Component {
       password: ""
     };
   }
-
-  // firebaseAuth = (email, password) => {
-  //   firebaseApp
-  //     .auth()
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then(authData => {})
-  //     .catch(err => {
-  //       alert(err.code);
-  //     });
-  // };
 
   onChange = e => {
     const newCreds = { ...this.state };
@@ -39,22 +29,39 @@ class Login extends Component {
 
   render() {
     return (
-      <form className="login-form" onSubmit={this.handleSubmit}>
-        <h2>Login</h2>
-        <input
-          type="text"
-          name="email"
-          onChange={this.onChange}
-          value={this.state.email}
-        />
-        <input
-          type="password"
-          name="password"
-          onChange={this.onChange}
-          value={this.state.password}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="login-form">
+        <Grid
+          textAlign="center"
+          style={{ height: "100%" }}
+          verticalAlign="middle"
+        >
+          <Grid.Column style={{ maxwidth: 450 }}>
+            <Header as="h2" color="orange" textAlign="center">
+              CASA
+            </Header>
+            <Form size="large" onSubmit={this.handleSubmit}>
+              <Segment stacked>
+                <Form.Input
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="Email Address"
+                />
+                <Form.Input
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                  placeholder="Password"
+                  type="password"
+                />
+                <Button color="blue" fluid size="large">
+                  Sign in
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }

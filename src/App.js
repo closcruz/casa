@@ -34,23 +34,6 @@ class App extends Component {
       });
   };
 
-  // authHandler = async authData => {
-  //   // 1. Get all authUsers from CASA db
-  //   const authUsers = await base.fetch("authUsers", {
-  //     context: this,
-  //     asArray: true
-  //   });
-  //   console.log(authUsers);
-  //   // 2. Check to see if uid received from login matches uid set in db
-  //   const isUserAuth = authUsers.includes(authData.user.uid);
-  //   if (isUserAuth) {
-  //     this.setState({ uid: authData.user.uid, authUser: true });
-  //   }
-  //   // authData will be returned after authentication with Firebase
-  //   // Get uid from authorized user and save to state to dictate which screens are shown
-  //   console.log(authData);
-  // };
-
   render() {
     return (
       <div className="App">
@@ -87,7 +70,6 @@ class App extends Component {
               path="/about"
               render={props => <ProtectedRoute {...props} me={this.state.me} />}
             />
-            {/* <Route path="/about" component={About} /> */}
             <Route
               path="/login"
               render={({ history }) => (
