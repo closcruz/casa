@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
-import base, { firebaseApp } from "./base";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { Menu, Header, Grid } from "semantic-ui-react";
+import { firebaseApp } from "./base";
 import Home from "./components/Home";
 import About from "./components/About";
 import News from "./components/News";
@@ -38,7 +39,23 @@ class App extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <div className="header">
+          <Header as="h1" textAlign="center" style={{ fontSize: 80 }}>
+            CASA
+          </Header>
+          <Grid centered>
+            <Menu compact>
+              <Menu.Item as={Link} to="/news">
+                News
+              </Menu.Item>
+              <Menu.Item as={Link} to="/events">
+                Events
+              </Menu.Item>
+              <Menu.Item as={Link} to="/about">
+                About Us
+              </Menu.Item>
+            </Menu>
+          </Grid>
+          {/* <div className="header">
             <h2 className="casa-big">
               <Link to="/">CASA</Link>
             </h2>
@@ -61,7 +78,7 @@ class App extends Component {
                 Logout
               </button>
             )}
-          </div>
+          </div> */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/news" component={News} />

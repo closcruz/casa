@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 
 class Login extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired
+  };
+
   constructor() {
     super();
 
@@ -35,9 +39,9 @@ class Login extends Component {
           style={{ height: "100%" }}
           verticalAlign="middle"
         >
-          <Grid.Column style={{ maxwidth: 450 }}>
+          <Grid.Column width="4">
             <Header as="h2" color="orange" textAlign="center">
-              CASA
+              Log In
             </Header>
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>
@@ -45,14 +49,18 @@ class Login extends Component {
                   fluid
                   icon="user"
                   iconPosition="left"
+                  name="email"
                   placeholder="Email Address"
+                  onChange={this.onChange}
                 />
                 <Form.Input
                   fluid
                   icon="lock"
                   iconPosition="left"
+                  name="password"
                   placeholder="Password"
                   type="password"
+                  onChange={this.onChange}
                 />
                 <Button color="blue" fluid size="large">
                   Sign in
