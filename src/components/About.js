@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import base from "../base";
 import Member from "./Member";
-import MemberForms from "./MemberForms";
-import sampleMembers from "../sample-member";
+import AddMember from "./AddMember";
+import EditMembers from "./EditMembers";
 import { Grid, Header } from "semantic-ui-react";
 
 class About extends Component {
@@ -35,10 +35,6 @@ class About extends Component {
     const members = { ...this.state.members }; //1. Copy existing state
     members[key] = null; //2. Remove by setting choosen member to null so it reflects on db
     this.setState({ members }); //3. Set new state
-  };
-
-  loadSampleMembers = () => {
-    this.setState({ members: sampleMembers });
   };
 
   render() {
@@ -81,40 +77,20 @@ class About extends Component {
             </ul>
           </Grid.Column>
           <Grid.Column>
-            <MemberForms
-              members={this.state.members}
-              addMember={this.addMember}
-              updateMember={this.updateMember}
-              deleteMember={this.deleteMember}
-            />
+            <AddMember addMember={this.addMember} />
+            <Header as="h4">Edit Member List</Header>
+            {Object.keys(this.state.members).map(key => (
+              <EditMembers
+                key={key}
+                index={key}
+                member={this.state.members[key]}
+                updateMember={this.updateMember}
+                deleteMember={this.deleteMember}
+              />
+            ))}
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      // <div className="about">
-      //   <h2>About our organization</h2>
-      //   <p>
-      //     A good chunk of text will go here and this is place holder text for
-      //     the purpose of styling and seeing how a paragraph about the group
-      //     would look like. A picture can be placed on this page as well. Will
-      //     definitely have to discuss this with board members for them to come up
-      //     with what they officially want on here.
-      //   </p>
-      //   <h3>Current members are:</h3>
-      //   <div className="about-container">
-      //     <MemberForms
-      //       members={this.state.members}
-      //       addMember={this.addMember}
-      //       updateMember={this.updateMember}
-      //       deleteMember={this.deleteMember}
-      //     />
-      // <ul className="members-list">
-      //   {Object.keys(this.state.members).map(key => (
-      //     <Member key={key} index={key} details={this.state.members[key]} />
-      //   ))}
-      // </ul>
-      //   </div>
-      //   <button onClick={this.loadSampleMembers}>Load Sample Members</button>
-      // </div>
     );
   }
 }
