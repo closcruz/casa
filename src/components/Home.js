@@ -1,10 +1,12 @@
 import React from "react";
+import { Container, Header } from "semantic-ui-react";
 
 const Home = props => (
-  <div className="home">
-    <h2>Welcome to the Central American Student Association Webpage</h2>
-    <p>Currently logged in with id: {props.uid}</p>
-  </div>
+  <Container text>
+    <Header as="h2" textAlign="center">
+      Welcome to the Central American Student Association Webpage
+    </Header>
+  </Container>
 );
 
 export default Home;

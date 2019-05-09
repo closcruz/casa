@@ -10,7 +10,7 @@ class MemberForms extends Component {
     updateMember: PropTypes.func,
     deleteMember: PropTypes.func
   };
-  // TODO implement state for checking authentication for editing member list
+
   render() {
     return (
       <div className="member-forms">
