@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Button, Header } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 class AddMember extends Component {
+  // TODO Change Refs to event checking to gather data
   nameRef = React.createRef();
   positionRef = React.createRef();
   emailRef = React.createRef();
@@ -28,8 +29,10 @@ class AddMember extends Component {
     e.currentTarget.reset();
   };
   render() {
+    // TODO Change Refs to event checking to gather data
     return (
       <Form onSubmit={this.createMember}>
+        <Header as="h4">Add new board member</Header>
         <Form.Group>
           <Form.Input
             placeholder="Member's Name"
@@ -43,35 +46,16 @@ class AddMember extends Component {
           />
           <Form.Input placeholder="Email" name="email" ref={this.emailRef} />
         </Form.Group>
+        <Form.Group>
+          <Form.Input placeholder="Major" name="major" ref={this.majorRef} />
+          <Form.Input
+            placeholder="Member Since"
+            name="memSince"
+            ref={this.memSinceRef}
+          />
+          <Button fluid size="small" color="blue" icon="plus" />
+        </Form.Group>
       </Form>
-      // <form className="member-add" onSubmit={this.createMember}>
-      //   <input
-      //     name="name"
-      //     type="text"
-      //     placeholder="Member Name"
-      //     ref={this.nameRef}
-      //   />
-      //   <input
-      //     name="position"
-      //     type="text"
-      //     placeholder="Position"
-      //     ref={this.positionRef}
-      //   />
-      //   <input
-      //     name="email"
-      //     type="text"
-      //     placeholder="Main Email"
-      //     ref={this.emailRef}
-      //   />
-      //   <input
-      //     name="major"
-      //     type="text"
-      //     placeholder="Member's Major"
-      //     ref={this.majorRef}
-      //   />
-      //   <input name="memSince" type="text" ref={this.memSinceRef} />
-      //   <button type="submit">Add Member</button>
-      // </form>
     );
   }
 }
