@@ -1,14 +1,19 @@
 import React from "react";
+import { Card, Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 const Member = props => (
-  <li className="member-item">
-    <h3 className="member-name">{props.details.name}</h3>
-    <h4 className="member-pos">{props.details.position}</h4>
-    <p className="member-email">{props.details.email}</p>
-    <p className="member-major">{props.details.major}</p>
-    <p className="member-memSince">{props.details.memSince}</p>
-  </li>
+  <Card centered>
+    <Image src="https://via.placeholder.com/100" wrapped ui={false} />
+    <Card.Content>
+      <Card.Header>{props.details.name}</Card.Header>
+      <Card.Meta>Member Since: {props.details.memSince}</Card.Meta>
+      <Card.Description>
+        Position: {props.details.position} - Major: {props.details.major}
+      </Card.Description>
+      <Card.Description>Email: {props.details.email}</Card.Description>
+    </Card.Content>
+  </Card>
 );
 
 Member.propTypes = {

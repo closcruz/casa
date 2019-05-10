@@ -66,15 +66,9 @@ class About extends Component {
             blandit libero volutpat sed. Fermentum dui faucibus in ornare.
           </Grid.Column>
           <Grid.Column>
-            <ul className="members-list">
-              {Object.keys(this.state.members).map(key => (
-                <Member
-                  key={key}
-                  index={key}
-                  details={this.state.members[key]}
-                />
-              ))}
-            </ul>
+            {Object.keys(this.state.members).map(key => (
+              <Member key={key} index={key} details={this.state.members[key]} />
+            ))}
           </Grid.Column>
           <Grid.Column>
             <AddMember addMember={this.addMember} />

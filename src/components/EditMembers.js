@@ -27,7 +27,6 @@ class EditMember extends Component {
   render() {
     return (
       <Form>
-        `
         <Form.Group>
           <Form.Input
             name="name"
@@ -63,41 +62,6 @@ class EditMember extends Component {
           />
         </Form.Group>
       </Form>
-      // <div className="member-edit">
-      //   <input
-      //     name="name"
-      //     type="text"
-      //     onChange={this.handleChange}
-      //     value={this.props.member.name}
-      //   />
-      //   <input
-      //     name="position"
-      //     type="text"
-      //     onChange={this.handleChange}
-      //     value={this.props.member.position}
-      //   />
-      //   <input
-      //     name="email"
-      //     type="text"
-      //     onChange={this.handleChange}
-      //     value={this.props.member.email}
-      //   />
-      //   <input
-      //     name="major"
-      //     type="text"
-      //     onChange={this.handleChange}
-      //     value={this.props.member.major}
-      //   />
-      //   <input
-      //     name="memSince"
-      //     type="text"
-      //     onChange={this.handleChange}
-      //     value={this.props.member.memSince}
-      //   />
-      //   <button onClick={() => this.props.deleteMember(this.props.index)}>
-      //     Remove Member
-      //   </button>
-      // </div>
     );
   }
 }

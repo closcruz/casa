@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Grid, Header} from 'semantic-ui-react'
 import base from "../base";
 import EventForms from "./EventForms";
 import Event from "./Event";
@@ -40,20 +41,25 @@ class Events extends Component {
 
   render() {
     return (
-      <div className="events">
-        <h2>Upcoming Events</h2>
-        <EventForms
-          events={this.state.events}
-          addEvent={this.addEvent}
-          updateEvent={this.updateEvent}
-          deleteEvent={this.deleteEvent}
-        />
-        <ul className="event-list">
-          {Object.keys(this.state.events).map(key => (
-            <Event key={key} index={key} details={this.state.events[key]} />
-          ))}
-        </ul>
-      </div>
+      <Grid>
+        <Header as='h2'>Upcoming Events</Header>
+        <Grid.Row></Grid.Row>
+        <Grid.Row></Grid.Row>
+      </Grid>
+      // <div className="events">
+      //   <h2>Upcoming Events</h2>
+      //   <EventForms
+      //     events={this.state.events}
+      //     addEvent={this.addEvent}
+      //     updateEvent={this.updateEvent}
+      //     deleteEvent={this.deleteEvent}
+      //   />
+      //   <ul className="event-list">
+      //     {Object.keys(this.state.events).map(key => (
+      //       <Event key={key} index={key} details={this.state.events[key]} />
+      //     ))}
+      //   </ul>
+      // </div>
     );
   }
 }
