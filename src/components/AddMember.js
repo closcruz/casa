@@ -42,40 +42,40 @@ class AddMember extends Component {
   };
 
   render() {
-    // TODO Change Refs to event checking to gather data
     return (
       <Form onSubmit={this.createMember}>
         <Header as="h4">Add new board member</Header>
-        <Form.Group>
-          <Form.Input
-            placeholder="Member's Name"
-            name="name"
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            placeholder="Position"
-            name="position"
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            placeholder="Email"
-            name="email"
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Input
-            placeholder="Major"
-            name="major"
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            placeholder="Member Since"
-            name="memSince"
-            onChange={this.handleChange}
-          />
-          <Button fluid size="small" color="blue" icon="plus" />
-        </Form.Group>
+        <Form.Input
+          fluid
+          placeholder="Member's Name"
+          name="name"
+          onChange={this.handleChange}
+        />
+        <Form.Input
+          fluid
+          placeholder="Position"
+          name="position"
+          onChange={this.handleChange}
+        />
+        <Form.Input
+          fluid
+          placeholder="Email"
+          name="email"
+          onChange={this.handleChange}
+        />
+        <Form.Input
+          fluid
+          placeholder="Major"
+          name="major"
+          onChange={this.handleChange}
+        />
+        <Form.Input
+          fluid
+          placeholder="Member Since"
+          name="memSince"
+          onChange={this.handleChange}
+        />
+        <Button fluid size="small" color="blue" icon="plus" />
       </Form>
     );
   }

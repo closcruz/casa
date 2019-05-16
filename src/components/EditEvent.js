@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, Header, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 class EditEvent extends Component {
@@ -23,28 +24,31 @@ class EditEvent extends Component {
 
   render() {
     return (
-      <div className="event-edit">
-        <input
-          name="title"
-          type="text"
-          onChange={this.handleChange}
-          value={this.props.event.title}
-        />
-        <input
-          name="date"
-          type="text"
-          onChange={this.handleChange}
-          value={this.props.event.date}
-        />
-        <textarea
-          name="desc"
-          onChange={this.handleChange}
-          value={this.props.event.desc}
-        />
-        <button onClick={() => this.props.deleteEvent(this.props.index)}>
-          &times;
-        </button>
-      </div>
+      <Form>
+        <Header as="h4">Edit Events</Header>
+        <Form.Group>
+          <Form.Input
+            name="title"
+            value={this.props.event.title}
+            onChange={this.handleChange}
+          />
+          <Form.Input
+            name="date"
+            value={this.props.event.date}
+            onChange={this.handleChange}
+          />
+          <Form.Input
+            name="desc"
+            value={this.props.event.description}
+            onChange={this.handleChange}
+          />
+          <Button
+            color="red"
+            icon="close"
+            onClick={() => this.props.deleteEvent(this.props.index)}
+          />
+        </Form.Group>
+      </Form>
     );
   }
 }

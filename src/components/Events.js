@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import {Grid, Header} from 'semantic-ui-react'
+import { Grid, Header, Button, Modal } from "semantic-ui-react";
 import base from "../base";
-import EventForms from "./EventForms";
+import AddEvent from "./AddEvent";
+import EditEventPicker from "./EditEventPicker";
 import Event from "./Event";
 
 class Events extends Component {
@@ -41,25 +42,33 @@ class Events extends Component {
 
   render() {
     return (
-      <Grid>
-        <Header as='h2'>Upcoming Events</Header>
-        <Grid.Row></Grid.Row>
-        <Grid.Row></Grid.Row>
+      <Grid container>
+        <Modal size="large" trigger={<Button>Edit Events</Button>}>
+          <Modal.Header>Editing Events</Modal.Header>
+          <Modal.Content>
+            <Grid columns={2}>
+              <Grid.Column width={5}>
+                <AddEvent addEvent={this.addEvent} />
+              </Grid.Column>
+              <Grid.Column>
+                <EditEventPicker
+                  events={this.state.events}
+                  updateEvent={this.updateEvent}
+                  deleteEvent={this.deleteEvent}
+                />
+              </Grid.Column>
+            </Grid>
+          </Modal.Content>
+        </Modal>
+        <Grid.Row centered>
+          <Header as="h2">Upcoming Events</Header>
+        </Grid.Row>
+        <Grid.Row>
+          {Object.keys(this.state.events).map(key => (
+            <Event key={key} index={key} details={this.state.events[key]} />
+          ))}
+        </Grid.Row>
       </Grid>
-      // <div className="events">
-      //   <h2>Upcoming Events</h2>
-      //   <EventForms
-      //     events={this.state.events}
-      //     addEvent={this.addEvent}
-      //     updateEvent={this.updateEvent}
-      //     deleteEvent={this.deleteEvent}
-      //   />
-      //   <ul className="event-list">
-      //     {Object.keys(this.state.events).map(key => (
-      //       <Event key={key} index={key} details={this.state.events[key]} />
-      //     ))}
-      //   </ul>
-      // </div>
     );
   }
 }

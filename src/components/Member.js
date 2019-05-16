@@ -4,12 +4,22 @@ import PropTypes from "prop-types";
 
 const Member = props => (
   <Card centered>
-    <Image src="https://via.placeholder.com/100" wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{props.details.name}</Card.Header>
-      <Card.Meta>Member Since: {props.details.memSince}</Card.Meta>
+      <Image
+        src="https://via.placeholder.com/75"
+        floated="left"
+        size="small"
+        ui={false}
+        wrapped
+        spaced
+      />
+      <Card.Header textAlign="right">{props.details.name}</Card.Header>
+      <Card.Meta textAlign="right">
+        Member Since: {props.details.memSince}
+      </Card.Meta>
       <Card.Description>
-        Position: {props.details.position} - Major: {props.details.major}
+        <p>Position: {props.details.position}</p>
+        <p>Major: {props.details.major}</p>
       </Card.Description>
       <Card.Description>Email: {props.details.email}</Card.Description>
     </Card.Content>

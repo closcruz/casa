@@ -33,11 +33,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Grid
-        textAlign="center"
-        style={{ height: "100%" }}
-        verticalAlign="middle"
-      >
+      <Grid.Row centered>
         <Grid.Column width="4">
           <Header as="h2" color="orange" textAlign="center">
             Log In
@@ -67,7 +63,7 @@ class Login extends Component {
             </Segment>
           </Form>
         </Grid.Column>
-      </Grid>
+      </Grid.Row>
     );
   }
 }

@@ -1,46 +1,66 @@
 import React, { Component } from "react";
+import { Form, Header, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 class AddEvent extends Component {
-  titleRef = React.createRef();
-  dateRef = React.createRef();
-  descRef = React.createRef();
-
   static propTypes = {
     addEvent: PropTypes.func
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: "",
+      date: "",
+      desc: ""
+    };
+  }
+
   createEvent = e => {
     e.preventDefault();
 
+    const { title, date, desc } = this.state;
     const event = {
-      title: this.titleRef.current.value,
-      date: this.dateRef.current.value,
-      desc: this.descRef.current.value
+      title: title,
+      date: date,
+      desc: desc
     };
 
     this.props.addEvent(event);
     e.currentTarget.reset();
   };
 
+  handleChange = e => {
+    const newState = { ...this.state };
+    newState[e.target.name] = e.target.value;
+    this.setState(newState);
+  };
+
   render() {
     return (
-      <form className="event-add" onSubmit={this.createEvent}>
-        <input
+      <Form onSubmit={this.createEvent}>
+        <Header as="h4">Add new Event</Header>
+        <Form.Input
+          fluid
+          placeholder="Name of Event"
           name="title"
-          type="text"
-          placeholder="Title of Event"
-          ref={this.titleRef}
+          onChange={this.handleChange}
         />
-        <input
-          name="date"
-          type="text"
+        <Form.Input
+          fluid
           placeholder="Date of Event"
-          ref={this.dateRef}
+          name="date"
+          onChange={this.handleChange}
         />
-        <textarea name="desc" placeholder="Description" ref={this.descRef} />
-        <button type="submit">Add Event</button>
-      </form>
+        <Form.Input
+          fluid
+          placeholder="Description"
+          name="desc"
+          onChange={this.handleChange}
+        />
+        <Button fluid size="small" color="blue" icon="plus" />
+      </Form>
     );
   }
 }
