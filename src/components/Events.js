@@ -41,9 +41,14 @@ class Events extends Component {
   };
 
   render() {
+    const { me } = this.props;
+
     return (
       <Grid container>
-        <Modal size="large" trigger={<Button>Edit Events</Button>}>
+        <Modal
+          size="large"
+          trigger={me ? <Button floated="right">Edit Events</Button> : null}
+        >
           <Modal.Header>Editing Events</Modal.Header>
           <Modal.Content>
             <Grid columns={2}>
@@ -63,7 +68,7 @@ class Events extends Component {
         <Grid.Row centered>
           <Header as="h2">Upcoming Events</Header>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row columns={4}>
           {Object.keys(this.state.events).map(key => (
             <Event key={key} index={key} details={this.state.events[key]} />
           ))}

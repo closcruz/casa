@@ -75,13 +75,14 @@ class App extends Component {
           <Grid>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/news" component={News} />
-              <Route path="/events" component={Events} />
+              <Route path="/news" render={() => <News me={this.state.me} />} />
+              <Route
+                path="/events"
+                render={() => <Events me={this.state.me} />}
+              />
               <Route
                 path="/about"
-                render={props => (
-                  <ProtectedRoute {...props} me={this.state.me} />
-                )}
+                render={() => <About me={this.state.me} />}
               />
               <Route
                 path="/login"

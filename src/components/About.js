@@ -38,11 +38,13 @@ class About extends Component {
   };
 
   render() {
+    const { me } = this.props;
+
     return (
       <Grid columns={2}>
         <Modal
           size="large"
-          trigger={<Button floated="right">Edit Members</Button>}
+          trigger={me ? <Button floated="right">Edit Members</Button> : null}
         >
           <Modal.Header>Editing Members</Modal.Header>
           <Modal.Content>
