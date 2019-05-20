@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import base from "../base";
+import { Grid, Header, Button, Modal } from "semantic-ui-react";
 import AddNews from "./AddNews";
 import EditNews from "./EditNews";
 import NewsClip from "./NewsClip";
@@ -41,24 +42,42 @@ class News extends Component {
   };
 
   render() {
+    const { me } = this.props;
+
     return (
-      <div>
-        <h2>News</h2>
-        {Object.keys(this.state.articles).map(key => (
-          <NewsClip key={key} index={key} details={this.state.articles[key]} />
-        ))}
-        <AddNews addArticle={this.addArticle} />
-        <h4>Edit News</h4>
-        {Object.keys(this.state.articles).map(key => (
-          <EditNews
-            key={key}
-            index={key}
-            article={this.state.articles[key]}
-            updateArticle={this.updateArticle}
-            deleteArticle={this.deleteArticle}
-          />
-        ))}
-      </div>
+      <Grid container>
+        <Modal
+          size="large"
+          trigger={me ? <Button floated="right">Edit News</Button> : null}
+        >
+          <Modal.Content>
+            <Grid columns={2}>
+              <Grid.Column width={5}>
+                <AddNews addArticle={this.addArticle} />
+              </Grid.Column>
+              <Grid.Column>
+                {/* <EditEventPicker
+                  events={this.state.articles}
+                  updateArticle={this.updateArticle}
+                  deleteArticle={this.deleteArticle}
+                /> */}
+              </Grid.Column>
+            </Grid>
+          </Modal.Content>
+        </Modal>
+        <Grid.Row centered>
+          <Header as="h2">News of Interest</Header>
+        </Grid.Row>
+        <Grid.Row>
+          {Object.keys(this.state.articles).map(key => (
+            <NewsClip
+              key={key}
+              index={key}
+              details={this.state.articles[key]}
+            />
+          ))}
+        </Grid.Row>
+      </Grid>
     );
   }
 }
